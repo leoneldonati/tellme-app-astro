@@ -1,0 +1,87 @@
+---
+interface Props {
+  action: string;
+  method: string;
+  enctype: string;
+  type: "signin" | "register";
+}
+
+const { action, method, enctype, type } = Astro.props;
+---
+
+<form action={action} method={method} enctype={enctype} class="form">
+  <label for="email">
+    Ingresa tu email
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="ejemplo@ejemplo.com"
+      autocomplete="email"
+      required
+    />
+  </label>
+
+  <label for="password">
+    Ingresa tu contraseña
+
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="******"
+      autocomplete="current-password"
+      required
+    />
+  </label>
+
+  <button type="submit">
+    <strong>
+      {type === "signin" && "Iniciar sesión"}
+      {type === "register" && "Registrarme"}
+    </strong>
+  </button>
+</form>
+
+<style>
+  .form {
+    max-width: 300px;
+    min-height: 400px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    border: 2px solid var(--accent);
+    border-radius: var(--rounded);
+    background-color: var(--bg);
+    box-shadow: var(--shadow);
+    font-size: var(--title-secondary);
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: #444;
+    color: #fff;
+  }
+  input::placeholder {
+    color: slategray;
+  }
+
+  button {
+    padding: 10px 20px;
+    border-radius: var(--rounded);
+    background: var(--accent);
+    cursor: pointer;
+    transition: transform .15s ease;
+  }
+  button:hover {
+    transform: scale(1.05);
+  }
+  button:active {
+    transform: scale(.93);
+  }
+</style>

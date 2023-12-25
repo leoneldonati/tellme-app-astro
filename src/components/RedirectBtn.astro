@@ -1,0 +1,18 @@
+---
+interface Props {
+  to: string;
+  title: string;
+}
+
+const { to, title } = Astro.props
+---
+<a href={to} title={title}><slot /></a>
+<style>
+  a {
+    text-decoration: none;
+    color: var(--accent);
+  }
+  a:visited {
+    color: #f0f;
+  }
+</style>

@@ -1,51 +1,62 @@
 ---
 interface Props {
-	title: string;
+  page: string;
 }
 
-const { title } = Astro.props;
+const { page } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Tellme! - {page}</title>
+  </head>
+  <body>
+    <main class="main">
+      <slot />
+    </main>
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  @font-face {
+    font-family: "Noto Sans";
+    src: url("/public/font/Noto_Sans/NotoSans-VariableFont_wdth,wght.ttf")
+      format("ttf");
+  }
+
+	/* variables */
+  :root {
+    --bg: rgb(33, 33, 33);
+		--rounded: 50px;
+    --shadow: 20px 20px 30px #2b2b2b, -20px -20px 30px #3b3b3b;
+    --accent: #ffd91a;
+    --font-primary: "Noto Sans", system-ui, sans-serif;
+		--font-light: rgba(244, 244, 244, .9);
+		--title-primary: 34px;
+		--title-secondary: 20px;
+  }
+  .main {
+    max-width: 1280px;
+    min-height: 100vh;
+    margin: 0 auto;
+    box-shadow: var(--shadow);
+		background: var(--bg);
+		color: var(--font-light);
+		font-family: var(--font-primary);
+    padding: 0 15px;
+  }
 </style>

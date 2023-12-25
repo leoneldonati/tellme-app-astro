@@ -1,0 +1,36 @@
+---
+interface Props {
+  provider: string;
+}
+const {provider} = Astro.props
+---
+<button value={provider} type="submit">
+
+  <slot name="svg"/>
+
+  <slot name="text"/>
+</button>
+
+<style>
+  button {
+    border: 2px solid var(--accent);
+    border-radius: 15px;
+    background: var(--bg);
+    padding: 10px 20px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: var(--font-ligth);
+    cursor: pointer;
+    transition: all .2s ease-out;
+  }
+  button:hover {
+    background: #000;
+    transform: scale(.97);
+  }
+  button:active {
+    transform: scale(1.02);
+  }
+</style>

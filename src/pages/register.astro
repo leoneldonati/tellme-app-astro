@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Form from "../components/Form.astro";
+---
+
+<Layout page="Register">
+  <section class="register_section">
+    <div class="register_container">
+      <div class="register_container--title">
+        <h2 class="register_title">
+          Regístrate y empieza a compartir experiencias!
+        </h2>
+
+        <span>¿Ya tienes una cuenta creada? 
+          <a href="/signin">
+            Inicia sesión
+          </a>
+        </span>
+      </div>
+
+     <Form
+      action="api/auth/register"
+      method="post"
+      type="register"
+      enctype=""
+     />
+    </div>
+  </section>
+</Layout>
